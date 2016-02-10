@@ -2,6 +2,7 @@
 
 use App\Club;
 use App\Http\Requests;
+use App\User;
 use App\Http\Controllers\Controller;
 
 use Carbon\Carbon;
@@ -9,6 +10,16 @@ use Illuminate\Http\Request;
 
 
 class ClubController extends Controller {
+
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -64,6 +75,11 @@ class ClubController extends Controller {
 	{
         $club = Club::findorfail($id);
         return view('clubs.show', compact('club'));
+	}
+
+	public function users(){
+		$users = User::all();
+		return view('clubs.users', compact('users'));
 	}
 
 	/**

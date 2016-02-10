@@ -22,7 +22,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
+Route::resource('users','ClubController@users');
 Route::resource('clubs','ClubController');
 //Route::get('clubs/{id}', 'ClubController@show');
 //Route::get('clubs/create', 'ClubController@create');
