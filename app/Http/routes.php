@@ -26,7 +26,7 @@ Route::resource('users','ClubController@users');
 Route::resource('clubs','ClubController');
 //Route::get('clubs/{id}', 'ClubController@show');
 //Route::get('clubs/create', 'ClubController@create');
-Route::post('clubs/store', 'ClubController@store');
+Route::post('clubs/update/{id}', 'ClubController@update');
 
 Route::resource('players','PlayerController');
 Route::post('players/store', 'PlayerController@store');

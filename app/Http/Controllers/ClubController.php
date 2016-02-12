@@ -4,7 +4,7 @@ use App\Club;
 use App\Http\Requests;
 use App\User;
 use App\Http\Controllers\Controller;
-
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -28,8 +28,7 @@ class ClubController extends Controller {
 	 */
 	public function index()
 	{
-        $clubs = Club::all();
-        //return $clubs;
+        $clubs = Club::where('user_id', '=', Auth::user()->id)->get();
 		return view('clubs.index',compact('clubs'));
 	}
 
@@ -41,7 +40,7 @@ class ClubController extends Controller {
 	public function create()
 	{
 		//
-        return view('clubs.create');
+        return 'You can\'t not create another club.';
 	}
 
 	/**
@@ -51,18 +50,7 @@ class ClubController extends Controller {
 	 */
 	public function store()
 	{
-        $input =  \Illuminate\Support\Facades\Request::all();
-        $input['published_at'] = Carbon::now();
 
-        $club = new Club;
-        $club->name = $input['name'];
-        $club->owner = $input['owner'];
-        $club->secretory = $input['secretory'];
-        $club->admin = $input['admin'];
-
-        $club->save();
-
-		return redirect('clubs');
 	}
 
 	/**
@@ -88,10 +76,10 @@ class ClubController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(Club $club)
+	public function edit($id)
 	{
-		//
-        return view('projects.edit', compact('club'));
+		$club = Club::find($id);
+        return view('clubs.edit', compact('club'));
 	}
 
 	/**
@@ -100,9 +88,24 @@ class ClubController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Club $club)
+	public function update($id)
 	{
-		//
+		$input =  \Illuminate\Support\Facades\Request::all();
+
+		$club = Club::find($id);
+		$club->name 		= $input['name'];
+		$club->owner 		= $input['owner'];
+		$club->secretory 	= $input['secretory'];
+		$club->admin 		= $input['admin'];
+		$club->address1		= $input['address1'];
+		$club->address2		= $input['address2'];
+		$club->city			= $input['city'];
+		$club->postcode		= $input['postcode'];
+		$club->county		= $input['county'];
+
+		$club->save();
+
+		return redirect('clubs');
 	}
 
 	/**
