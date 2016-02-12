@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 use App\Team;
+use App\club;
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -50,13 +52,16 @@ class TeamController extends Controller {
         $input =  \Illuminate\Support\Facades\Request::all();
         $input['published_at'] = Carbon::now();
 
+		$club = Club::where('user_id', '=', Auth::user()->id)->first();
+
         $team = new Team;
         $team->name = $input['name'];
-        $team->club_id = $input['club_id'];
 
         $team->save();
 
-        return redirect('teams');
+		$team->clubs()->attach($club->id);
+
+		return redirect('teams');
 	}
 
 	/**

@@ -6,4 +6,8 @@ class Team extends Model {
 
 	//
 
+    public function clubs(){
+        return $this->belongsToMany('App\Club');
+    }
+
 }
