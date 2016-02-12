@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Player;
+use App\Club;
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -49,11 +51,18 @@ class PlayerController extends Controller {
 	{
         $input =  \Illuminate\Support\Facades\Request::all();
         $input['published_at'] = Carbon::now();
+		$club = Club::where('user_id', '=', Auth::user()->id)->first();
 
         $player = new Player;
-        $player->firstname = $input['firstname'];
-        $player->lastname = $input['lastname'];
-        $player->club_id = $input['club_id'];
+        $player->firstname 	= $input['firstname'];
+        $player->lastname 	= $input['lastname'];
+		$player->address1 	= $input['address1'];
+		$player->address1 	= $input['address2'];
+		$player->dob 		= $input['dob'];
+		$player->city 		= $input['city'];
+		$player->postcode	= $input['postcode'];
+		$player->county		= $input['county'];
+		$player->club_id 	= $club->id;
 
         $player->save();
 

@@ -35,9 +35,44 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Club</label>
+                            <label class="col-md-4 control-label">Address Line 1</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="club_id" value="{{ old('club_id') }}">
+                                <input type="text" class="form-control" name="address1" value="{{ old('address1') }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Address Line 2</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="address2" value="{{ old('addres2') }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">DOB</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="dob" value="{{ old('dob') }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">City</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="city" value="{{ old('city') }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Postcode</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="postcode" value="{{ old('postcode') }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">County</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="county" value="{{ old('county') }}">
                             </div>
                         </div>
 
