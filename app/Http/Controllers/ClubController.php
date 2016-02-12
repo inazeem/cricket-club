@@ -105,6 +105,11 @@ class ClubController extends Controller {
 
 		$club->save();
 
+		$user = Auth::user();
+
+		$user->club_name = $input['name'];
+		$user->save();
+
 		return redirect('clubs');
 	}
 
