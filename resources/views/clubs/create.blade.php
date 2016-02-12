@@ -33,20 +33,20 @@
                                 <input type="text" class="form-control" name="owner" value="{{ old('owner') }}">
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Email</label>
+                            <label class="col-md-4 control-label">Secretory</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="email" value="{{ old('email') }}">
+                                <input type="text" class="form-control" name="secretory" value="{{ old('secretory') }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Admin</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="admin" value="{{ old('admin') }}">
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Password</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="password" value="{{ old('password') }}">
-                            </div>
-                        </div>
+
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

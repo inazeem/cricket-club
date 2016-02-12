@@ -17,6 +17,12 @@ class CreatePlayerTable extends Migration {
             $table->increments('id');
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('address1');
+            $table->string('address2');
+            $table->date('dob');
+            $table->string('city');
+            $table->string('postcode');
+            $table->string('county');
             $table->integer('club_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
@@ -26,16 +32,6 @@ class CreatePlayerTable extends Migration {
             $table->foreign('club_id')->references('id')->on('clubs');
         });
 
-        Schema::create('player_team', function(Blueprint $table) {
-
-            $table->integer('player_id')->unsigned();
-            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
-
-            $table->integer('team_id')->unsigned();
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
-
-            $table->timestamps();
-        });
 	}
 
 	/**

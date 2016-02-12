@@ -16,11 +16,23 @@ class CreateClubTable extends Migration {
         {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
             $table->string('owner');
-            $table->string('password', 60);
+            $table->string('secretory');
+            $table->string('admin');
+            $table->string('city');
+            $table->string('postcode');
+            $table->string('county');
+            $table->string('address1');
+            $table->string('address2');
+            $table->integer('user_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('clubs', function($table) {
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

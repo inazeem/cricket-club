@@ -16,14 +16,17 @@ class CreateTeamTable extends Migration {
         {
             $table->increments('id');
             $table->string('name');
-            $table->integer('club_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });
 
-        Schema::table('Teams', function($table) {
-            $table->foreign('club_id')->references('id')->on('clubs');
-        });
+		Schema::create('club_team', function(Blueprint $table) {
+			$table->integer('club_id')->unsigned();
+			$table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
+			$table->integer('team_id')->unsigned();
+			$table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+			$table->timestamps();
+		});
 
 	}
 

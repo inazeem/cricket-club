@@ -57,8 +57,8 @@ class ClubController extends Controller {
         $club = new Club;
         $club->name = $input['name'];
         $club->owner = $input['owner'];
-        $club->email = $input['email'];
-        $club->password = $input['password'];
+        $club->secretory = $input['secretory'];
+        $club->admin = $input['admin'];
 
         $club->save();
 
