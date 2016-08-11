@@ -4,7 +4,7 @@
 <h2>Scorecards</h2>
 
 @if ( !$scorecard->count() )
-You have no scorecard
+You have no scorecard. This Scorecard does not work.
 @else
 <ul>
     <li style="list-style: none; float:left; width:100%; ">
